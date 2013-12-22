@@ -38,15 +38,5 @@ func (v *verifier) IsEmail() *verifier {
 func (v *verifier) IsUrl() *verifier {
 	r := regexp.MustCompile(urlRegexp)
 	v.Results["isUrl"] = r.MatchString(v.Query)
-	// u, _ := url.Parse(v.Query)
-	// v.Results["isUrl"] = true
-
-	// // verifications
-	// if u.String() != v.Query {
-	// 	v.Results["isUrl"] = false
-	// }
-	// if len(u.Host) == 0 || len(u.Scheme) == 0 {
-	// 	v.Results["isUrl"] = false
-	// }
 	return v
 }

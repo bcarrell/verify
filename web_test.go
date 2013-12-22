@@ -24,8 +24,6 @@ var (
 		"http://userid@example.com:8080/",
 		"http://userid:password@example.com",
 		"http://userid:password@example.com/",
-		// "http://142.42.1.1/",
-		// "http://142.42.1.1:8080/",
 		"http://➡.ws/䨹",
 		"http://⌘.ws",
 		"http://⌘.ws/",
@@ -44,7 +42,6 @@ var (
 		"http://-.~_!$&'()*+,;=:%40:80%2f::::::@example.com",
 		"http://1337.net",
 		"http://a.b-c.de",
-		// "http://223.255.255.254",
 	}
 	invalidUrls = []string{
 		"http://",
