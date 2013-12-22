@@ -34,11 +34,18 @@ func refute(t *testing.T, a interface{}, b interface{}) {
 
 const (
 	validEmail   string = "success@success.com"
-	invalidEmail string = "fail@fail"
+	invalidEmail string = "fail@"
 )
 
 func Test_Verify(t *testing.T) {
 	v := Verify(validEmail)
 	refute(t, v, nil)
-	expect(t, v.String, validEmail)
+	expect(t, v.Query, validEmail)
+}
+
+func Test_IsValidEmail(t *testing.T) {
+	v := Verify(validEmail).IsValidEmail()
+	expect(t, v.Results["isEmail"], true)
+	v = Verify(invalidEmail).IsValidEmail()
+	expect(t, v.Results["isEmail"], false)
 }
