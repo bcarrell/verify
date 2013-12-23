@@ -1,6 +1,6 @@
 # verify
 
-String validation utilities for Golang.
+Dead simple string validation utilities for Go.
 
     go get github.com/bcarrell/verify
 
