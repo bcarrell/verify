@@ -44,19 +44,19 @@ String validation utilities for Golang.
 
 Initialize by calling `verify.Verify(<str>)` and then use any of the following:
 
-.Email()
-.Url()
-.CreditCard()
-.Length(<int>)
-.MinLength(<int>) <-- inclusive
-.MaxLength(<int>) <-- inclusive
-.Int()
-.Is(<string>)
-.Isnt(<string>)
-.IsEmpty()
-.IsntEmpty()
-.Contains(<str>)
-.DoesntContain(<str>)
+	.Email()
+	.Url()
+	.CreditCard()
+	.Length(<int>)
+	.MinLength(<int>) <-- inclusive
+	.MaxLength(<int>) <-- inclusive
+	.Int()
+	.Is(<string>)
+	.Isnt(<string>)
+	.IsEmpty()
+	.IsntEmpty()
+	.Contains(<str>)
+	.DoesntContain(<str>)
 
 ## Contributing
 
