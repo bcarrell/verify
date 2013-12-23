@@ -61,7 +61,7 @@ Initialize by calling `verify.Verify(<str>)` and then use any of the following:
 ## Contributing
 
 I welcome any and all contributions.  If you'd like to request a verification
-function, be sure to create an Issue describing it.  If you'd like to contribute
-a verification function, please include corresponding test cases with your addition.
+method, be sure to create an Issue describing it.  If you'd like to contribute
+a verification method, please include corresponding test cases with your addition.
 
 Thanks!
