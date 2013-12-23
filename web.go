@@ -1,6 +1,4 @@
-/**
- * This file implements validators one might find useful for web development.
- */
+// Implements verifications for the web.
 package verify
 
 import "regexp"

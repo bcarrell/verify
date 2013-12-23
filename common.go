@@ -1,10 +1,15 @@
-// Common is a collection of methods for more general string verifications
+// Implements general use case verifications.
 package verify
 
 import (
 	"strconv"
 	"strings"
 )
+
+// verifies a string has a length equal to `length`
+func (v *verifier) Length(length int) *verifier {
+	return v.addVerification("Length", len(v.Query) == length)
+}
 
 // verifies a string has a length greater than or equal to `length`
 func (v *verifier) MinLength(length int) *verifier {
@@ -14,11 +19,6 @@ func (v *verifier) MinLength(length int) *verifier {
 // verifies a string has a length less than or equal to `length`
 func (v *verifier) MaxLength(length int) *verifier {
 	return v.addVerification("MaxLength", len(v.Query) <= length)
-}
-
-// verifies a string has a length equal to `length`
-func (v *verifier) Length(length int) *verifier {
-	return v.addVerification("Length", len(v.Query) == length)
 }
 
 // verifies a string is a string representation of a valid integer

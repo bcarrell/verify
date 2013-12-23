@@ -1,3 +1,4 @@
+// Implements verifications for handling financial information.
 package verify
 
 import (
