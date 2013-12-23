@@ -1,6 +1,8 @@
-verify
-======
+# verify
 
-String verification for Go
+String validation utilities for Golang.
 
-Documentation to come.
+# Installation
+    go get github.com/bcarrell/verify
+
+# Quick Start
