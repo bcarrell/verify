@@ -2,10 +2,9 @@
 
 String validation utilities for Golang.
 
-### Installation
     go get github.com/bcarrell/verify
 
-# Example
+## Example
 	package main
 
 	import (
@@ -40,3 +39,29 @@ String validation utilities for Golang.
 		fmt.Println(isScientistVerified) // true
 
 	}
+
+## API
+
+Initialize by calling `verify.Verify(<str>)` and then use any of the following:
+
+.Email()
+.Url()
+.CreditCard()
+.Length(<int>)
+.MinLength(<int>) <-- inclusive
+.MaxLength(<int>) <-- inclusive
+.Int()
+.Is(<string>)
+.Isnt(<string>)
+.IsEmpty()
+.IsntEmpty()
+.Contains(<str>)
+.DoesntContain(<str>)
+
+## Contributing
+
+I welcome any and all contributions.  If you'd like to request a verification
+function, be sure to create an Issue describing it.  If you'd like to contribute
+a verification function, please include corresponding test cases with your addition.
+
+Thanks!
