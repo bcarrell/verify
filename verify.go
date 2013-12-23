@@ -1,7 +1,5 @@
 package verify
 
-import "fmt"
-
 type verifier struct {
 	Query   string
 	Results map[string][]bool
@@ -16,7 +14,6 @@ func Verify(s string) *verifier {
 // helper for creating a new result key or appending to an existing result slice
 func (v *verifier) addVerification(key string, result bool) *verifier {
 	if _, ok := v.Results[key]; ok {
-		fmt.Println("here")
 		v.Results[key] = append(v.Results[key], result)
 	} else {
 		v.Results[key] = []bool{result}
