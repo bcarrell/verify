@@ -34,7 +34,7 @@ Dead simple string validation utilities for Go.
 		fmt.Println(scientist.Results["DoesntContain"]) // [true]
 
 		// or, if you don't care about individual results and just want to know
-		// if everything passed, tack on an .isVerified() method call at the end
+		// if everything passed, tack on an .IsVerified() method call at the end
 		isScientistVerified := scientist.IsVerified()
 		fmt.Println(isScientistVerified) // true
 
