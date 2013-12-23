@@ -27,7 +27,7 @@ const (
 		"$"
 )
 
-// checks for a valid email
+// verifies an email
 // as with all regex-based email validations, this may return inaccurate results
 func (v *verifier) Email() *verifier {
 	r := regexp.MustCompile(emailRegexp)
@@ -35,6 +35,7 @@ func (v *verifier) Email() *verifier {
 	return v
 }
 
+// verifies a url
 func (v *verifier) Url() *verifier {
 	r := regexp.MustCompile(urlRegexp)
 	v.Results["Url"] = r.MatchString(v.Query)
