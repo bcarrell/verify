@@ -12,6 +12,9 @@ const (
 		"[0-9]{11}|(?:2131|1800|35\\d{3})\\d{11})$"
 )
 
+// verifies a credit card is valid
+// we consider a credit card to be valid if it passes the constant
+// creditCardRegexp and passes the Luhn algorithm
 func (v *verifier) CreditCard() *verifier {
 	v.Results["CreditCard"] = true
 	r := regexp.MustCompile("[^0-9]+")
