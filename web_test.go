@@ -87,21 +87,20 @@ var (
 )
 
 func Test_IsValidEmail(t *testing.T) {
-	v := Verify(validEmail).IsEmail()
-	expect(t, v.Results["isEmail"], true)
-	v = Verify(invalidEmail).IsEmail()
-	expect(t, v.Results["isEmail"], false)
+	v := Verify(validEmail).Email().IsVerified()
+	expect(t, v, true)
+	v = Verify(invalidEmail).Email().IsVerified()
+	expect(t, v, false)
 }
 
 func Test_IsValidUrl(t *testing.T) {
-	var v *verifier
 	for _, url := range invalidUrls {
-		v = Verify(url).IsUrl()
-		expect(t, v.Results["isUrl"], false)
+		v := Verify(url).Url().IsVerified()
+		expect(t, v, false)
 	}
 
 	for _, url := range validUrls {
-		v = Verify(url).IsUrl()
-		expect(t, v.Results["isUrl"], true)
+		v := Verify(url).Url().IsVerified()
+		expect(t, v, true)
 	}
 }

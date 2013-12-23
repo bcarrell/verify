@@ -29,13 +29,13 @@ const (
 
 // checks for a valid email
 // as with all regex-based email validations, this may return inaccurate results
-func (v *verifier) IsEmail() *verifier {
+func (v *verifier) Email() *verifier {
 	r := regexp.MustCompile(emailRegexp)
 	v.Results["isEmail"] = r.MatchString(v.Query)
 	return v
 }
 
-func (v *verifier) IsUrl() *verifier {
+func (v *verifier) Url() *verifier {
 	r := regexp.MustCompile(urlRegexp)
 	v.Results["isUrl"] = r.MatchString(v.Query)
 	return v
