@@ -13,13 +13,13 @@ const (
 )
 
 func (v *verifier) CreditCard() *verifier {
-	v.Results["isCreditCard"] = true
+	v.Results["CreditCard"] = true
 	r := regexp.MustCompile("[^0-9]+")
 	card := r.ReplaceAllLiteralString(v.Query, "")
 	r = regexp.MustCompile(creditCardRegexp)
 	if !r.MatchString(card) {
 		fmt.Println(card)
-		v.Results["isCreditCard"] = false
+		v.Results["CreditCard"] = false
 		return v
 	}
 
@@ -42,7 +42,7 @@ func (v *verifier) CreditCard() *verifier {
 		shouldDouble = !shouldDouble
 	}
 	if sum%10 != 0 {
-		v.Results["isCreditCard"] = false
+		v.Results["CreditCard"] = false
 	}
 	return v
 }

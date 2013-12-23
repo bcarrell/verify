@@ -9,6 +9,20 @@ var (
 		"jim",
 		"sue",
 	}
+	validIntegers = []string{
+		"123",
+		"4",
+		"9993",
+	}
+	invalidIntegers = []string{
+		"12 3",
+		" 123",
+		" 1",
+		"1,200",
+		"fm",
+		"dskq",
+		" a",
+	}
 )
 
 func Test_Length(t *testing.T) {
@@ -30,5 +44,63 @@ func Test_Length(t *testing.T) {
 		v = Verify(name).Length(4).IsVerified()
 		expect(t, v, false)
 	}
+}
 
+func Test_Integers(t *testing.T) {
+	for _, integer := range validIntegers {
+		v := Verify(integer).Int().IsVerified()
+		expect(t, v, true)
+	}
+	for _, integer := range invalidIntegers {
+		v := Verify(integer).Int().IsVerified()
+		expect(t, v, false)
+	}
+}
+
+func Test_Is(t *testing.T) {
+	v := Verify("seafood").Is("seafood").IsVerified()
+	expect(t, v, true)
+	v = Verify("seafood").Is("Seafood").IsVerified()
+	expect(t, v, false)
+	v = Verify("seafood").Is("Poultry").IsVerified()
+	expect(t, v, false)
+}
+
+func Test_Isnt(t *testing.T) {
+	v := Verify("seafood").Isnt("poultry").IsVerified()
+	expect(t, v, true)
+	v = Verify("seafood").Isnt("seafood").IsVerified()
+	expect(t, v, false)
+}
+
+func Test_IsntEmpty(t *testing.T) {
+	v := Verify("seafood").IsntEmpty().IsVerified()
+	expect(t, v, true)
+	v = Verify("").IsntEmpty().IsVerified()
+	expect(t, v, false)
+}
+
+func Test_IsEmpty(t *testing.T) {
+	v := Verify("").IsEmpty().IsVerified()
+	expect(t, v, true)
+	v = Verify("seafood").IsEmpty().IsVerified()
+	expect(t, v, false)
+}
+
+func Test_Contains(t *testing.T) {
+	v := Verify("team").Contains("i").IsVerified()
+	expect(t, v, false)
+	v = Verify("team").Contains("e").IsVerified()
+	expect(t, v, true)
+	v = Verify("team").Length(4).Contains("e").IsVerified()
+	expect(t, v, true)
+	v = Verify("team").MaxLength(20).MinLength(5).Contains("e").IsVerified()
+	expect(t, v, false)
+}
+
+func Test_DoesntContain(t *testing.T) {
+	v := Verify("team").DoesntContain("i").IsVerified()
+	expect(t, v, true)
+	v = Verify("team").DoesntContain("e").IsVerified()
+	expect(t, v, false)
 }
