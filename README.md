@@ -1,4 +1,6 @@
 verify
 ======
 
-string validation for Go
+String verification for Go
+
+Documentation to come.
