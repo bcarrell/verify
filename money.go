@@ -1,7 +1,6 @@
 package verify
 
 import (
-	"fmt"
 	"regexp"
 	"strconv"
 )
@@ -23,14 +22,10 @@ const (
 //     - Diners Club
 //     - JCB
 func (v *verifier) CreditCard() *verifier {
-	v.Results["CreditCard"] = true
-	r := regexp.MustCompile("[^0-9]+")
-	card := r.ReplaceAllLiteralString(v.Query, "")
-	r = regexp.MustCompile(creditCardRegexp)
+	card := regexp.MustCompile("[^0-9]+").ReplaceAllLiteralString(v.Query, "")
+	r := regexp.MustCompile(creditCardRegexp)
 	if !r.MatchString(card) {
-		fmt.Println(card)
-		v.Results["CreditCard"] = false
-		return v
+		return v.addVerification("CreditCard", false)
 	}
 
 	// Luhn algorithm
@@ -51,8 +46,5 @@ func (v *verifier) CreditCard() *verifier {
 		}
 		shouldDouble = !shouldDouble
 	}
-	if sum%10 != 0 {
-		v.Results["CreditCard"] = false
-	}
-	return v
+	return v.addVerification("CreditCard", sum%10 == 0)
 }

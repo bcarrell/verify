@@ -90,7 +90,7 @@ func Test_IsEmpty(t *testing.T) {
 func Test_Contains(t *testing.T) {
 	v := Verify("team").Contains("i").IsVerified()
 	expect(t, v, false)
-	v = Verify("team").Contains("e").IsVerified()
+	v = Verify("team").Contains("e").Contains("a").IsVerified()
 	expect(t, v, true)
 	v = Verify("team").Length(4).Contains("e").IsVerified()
 	expect(t, v, true)

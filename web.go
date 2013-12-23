@@ -30,14 +30,12 @@ const (
 // verifies an email
 // as with all regex-based email validations, this may return inaccurate results
 func (v *verifier) Email() *verifier {
-	r := regexp.MustCompile(emailRegexp)
-	v.Results["Email"] = r.MatchString(v.Query)
-	return v
+	result := regexp.MustCompile(emailRegexp).MatchString(v.Query)
+	return v.addVerification("Email", result)
 }
 
 // verifies a url
 func (v *verifier) Url() *verifier {
-	r := regexp.MustCompile(urlRegexp)
-	v.Results["Url"] = r.MatchString(v.Query)
-	return v
+	result := regexp.MustCompile(urlRegexp).MatchString(v.Query)
+	return v.addVerification("Url", result)
 }
