@@ -1,6 +1,6 @@
 # verify
 
-Dead simple string validation utilities for Go.
+Dead simple string validation utilities for Go, inspired by node-validator.
 
     go get github.com/bcarrell/verify
 
