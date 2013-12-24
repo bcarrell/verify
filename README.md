@@ -48,22 +48,30 @@ with `Isnt` or `Doesnt`, depending on grammar.
 
 	.Email()
 	.IsntEmail()
+
 	.Url()
 	.IsntUrl()
+
 	.CreditCard()
 	.IsntCreditCard()
+
 	.Length(<int>)
 	.IsntLength(<int>)
-	.MinLength(<int>) <-- inclusive
-	.MaxLength(<int>) <-- inclusive
+
 	.Int()
 	.IsntInt()
+
 	.Is(<string>)
 	.Isnt(<string>)
+
 	.IsEmpty()
 	.IsntEmpty()
+
 	.Contains(<str>)
 	.DoesntContain(<str>)
+
+	.MinLength(<int>) <-- inclusive
+	.MaxLength(<int>) <-- inclusive
 
 ## Contributing
 
