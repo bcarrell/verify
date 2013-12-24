@@ -63,7 +63,21 @@ func (v *verifier) Contains(inner string) *verifier {
 	return v.addVerification("Contains", strings.Contains(v.Query, inner))
 }
 
+// case-insensitive `contains` method
+func (v *verifier) IContains(inner string) *verifier {
+	loQ := strings.ToLower(v.Query)
+	loInner := strings.ToLower(inner)
+	return v.addVerification("IContains", strings.Contains(loQ, loInner))
+}
+
 // verifies a string does not contain an `inner` string
 func (v *verifier) DoesntContain(inner string) *verifier {
 	return v.addVerification("DoesntContain", !strings.Contains(v.Query, inner))
+}
+
+// case-insensitive `doesntContain` method
+func (v *verifier) IDoesntContain(inner string) *verifier {
+	loQ := strings.ToLower(v.Query)
+	loInner := strings.ToLower(inner)
+	return v.addVerification("IDoesntContain", !strings.Contains(loQ, loInner))
 }

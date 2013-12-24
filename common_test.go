@@ -102,6 +102,8 @@ func Test_Contains(t *testing.T) {
 	expect(t, v, true)
 	v = Verify("team").MaxLength(20).MinLength(5).Contains("e").IsVerified()
 	expect(t, v, false)
+	v = Verify("team").MaxLength(8).MinLength(2).IContains("E").IsVerified()
+	expect(t, v, true)
 }
 
 func Test_DoesntContain(t *testing.T) {
@@ -109,4 +111,6 @@ func Test_DoesntContain(t *testing.T) {
 	expect(t, v, true)
 	v = Verify("team").DoesntContain("e").IsVerified()
 	expect(t, v, false)
+	v = Verify("team").MaxLength(8).IDoesntContain("yy").IsVerified()
+	expect(t, v, true)
 }

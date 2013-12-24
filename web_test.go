@@ -86,14 +86,21 @@ var (
 	}
 )
 
-func Test_IsValidEmail(t *testing.T) {
+func Test_IsEmail(t *testing.T) {
 	v := Verify(validEmail).Email().IsVerified()
 	expect(t, v, true)
 	v = Verify(invalidEmail).Email().IsVerified()
 	expect(t, v, false)
 }
 
-func Test_IsValidUrl(t *testing.T) {
+func Test_IsntEmail(t *testing.T) {
+	v := Verify(validEmail).IsntEmail().IsVerified()
+	expect(t, v, false)
+	v = Verify(invalidEmail).IsntEmail().IsVerified()
+	expect(t, v, true)
+}
+
+func Test_IsUrl(t *testing.T) {
 	for _, url := range invalidUrls {
 		v := Verify(url).Url().IsVerified()
 		expect(t, v, false)
@@ -101,6 +108,18 @@ func Test_IsValidUrl(t *testing.T) {
 
 	for _, url := range validUrls {
 		v := Verify(url).Url().IsVerified()
+		expect(t, v, true)
+	}
+}
+
+func Test_IsntUrl(t *testing.T) {
+	for _, url := range validUrls {
+		v := Verify(url).IsntUrl().IsVerified()
+		expect(t, v, false)
+	}
+
+	for _, url := range invalidUrls {
+		v := Verify(url).IsntUrl().IsVerified()
 		expect(t, v, true)
 	}
 }
