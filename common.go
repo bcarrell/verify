@@ -81,3 +81,22 @@ func (v *verifier) IDoesntContain(inner string) *verifier {
 	loInner := strings.ToLower(inner)
 	return v.addVerification("IDoesntContain", !strings.Contains(loQ, loInner))
 }
+
+func isInArray(strArr []string, search string) bool {
+	for _, item := range strArr {
+		if search == item {
+			return true
+		}
+	}
+	return false
+}
+
+// verifies a string is in an array of strings
+func (v *verifier) IsIn(strArr []string) *verifier {
+	return v.addVerification("IsIn", isInArray(strArr, v.Query))
+}
+
+// inverse verification for IsIn
+func (v *verifier) IsntIn(strArr []string) *verifier {
+	return v.addVerification("IsIn", !isInArray(strArr, v.Query))
+}

@@ -114,3 +114,22 @@ func Test_DoesntContain(t *testing.T) {
 	v = Verify("team").MaxLength(8).IDoesntContain("yy").IsVerified()
 	expect(t, v, true)
 }
+
+func Test_IsIn(t *testing.T) {
+	array := []string{
+		"There",
+		"is",
+		"no",
+		"I",
+		"in",
+		"team",
+	}
+	v := Verify("team").IsIn(array).IsVerified()
+	expect(t, v, true)
+	v = Verify("eye").IsIn(array).IsVerified()
+	expect(t, v, false)
+	v = Verify("eye").IsntIn(array).IsVerified()
+	expect(t, v, true)
+	v = Verify("team").IsntIn(array).IsVerified()
+	expect(t, v, false)
+}

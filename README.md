@@ -67,8 +67,11 @@ with `Isnt` or `Doesnt`, depending on grammar.
 	.IsEmpty()
 	.IsntEmpty()
 
-	.Contains(<str>)
-	.DoesntContain(<str>)
+	.Contains(<string>)
+	.DoesntContain(<string>)
+
+	.IsIn(<[]string>)
+	.IsntIn(<[]string>)
 
 	.MinLength(<int>) <-- inclusive
 	.MaxLength(<int>) <-- inclusive
