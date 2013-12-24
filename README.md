@@ -76,6 +76,9 @@ with `Isnt` or `Doesnt`, depending on grammar.
 	.MinLength(<int>) <-- inclusive
 	.MaxLength(<int>) <-- inclusive
 
+End your calls with `.IsVerified()` to return a boolean:  true if all
+verifications returned true, false if any returned false.
+
 ## Contributing
 
 I welcome any and all contributions.  If you'd like to request a verification
