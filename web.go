@@ -32,8 +32,20 @@ func (v *verifier) Email() *verifier {
 	return v.addVerification("Email", result)
 }
 
+// inverse verification of an email
+func (v *verifier) IsntEmail() *verifier {
+	result := regexp.MustCompile(emailRegexp).MatchString(v.Query)
+	return v.addVerification("Email", !result)
+}
+
 // verifies a url
 func (v *verifier) Url() *verifier {
 	result := regexp.MustCompile(urlRegexp).MatchString(v.Query)
 	return v.addVerification("Url", result)
+}
+
+// verifies a url
+func (v *verifier) IsntUrl() *verifier {
+	result := regexp.MustCompile(urlRegexp).MatchString(v.Query)
+	return v.addVerification("Url", !result)
 }

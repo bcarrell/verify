@@ -43,6 +43,8 @@ func Test_Length(t *testing.T) {
 		expect(t, v, false)
 		v = Verify(name).Length(4).IsVerified()
 		expect(t, v, false)
+		v = Verify(name).IsntLength(123).IsVerified()
+		expect(t, v, true)
 	}
 }
 
@@ -50,10 +52,14 @@ func Test_Integers(t *testing.T) {
 	for _, integer := range validIntegers {
 		v := Verify(integer).Int().IsVerified()
 		expect(t, v, true)
+		v = Verify(integer).IsntInt().IsVerified()
+		refute(t, v, true)
 	}
 	for _, integer := range invalidIntegers {
 		v := Verify(integer).Int().IsVerified()
 		expect(t, v, false)
+		v = Verify(integer).IsntInt().IsVerified()
+		refute(t, v, false)
 	}
 }
 

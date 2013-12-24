@@ -22,11 +22,11 @@ const (
 //     - Discover
 //     - Diners Club
 //     - JCB
-func (v *verifier) CreditCard() *verifier {
-	card := regexp.MustCompile("[^0-9]+").ReplaceAllLiteralString(v.Query, "")
+func isValidCreditCard(cardNum string) bool {
+	card := regexp.MustCompile("[^0-9]+").ReplaceAllLiteralString(cardNum, "")
 	r := regexp.MustCompile(creditCardRegexp)
 	if !r.MatchString(card) {
-		return v.addVerification("CreditCard", false)
+		return false
 	}
 
 	// Luhn algorithm
@@ -47,5 +47,16 @@ func (v *verifier) CreditCard() *verifier {
 		}
 		shouldDouble = !shouldDouble
 	}
-	return v.addVerification("CreditCard", sum%10 == 0)
+	return sum%10 == 0
+
+}
+
+// method for verifying a credit card
+func (v *verifier) IsCreditCard() *verifier {
+	return v.addVerification("IsCreditCard", isValidCreditCard(v.Query))
+}
+
+// method for varying a number isnt a credit card
+func (v *verifier) IsntCreditCard() *verifier {
+	return v.addVerification("IsntCreditCard", !isValidCreditCard(v.Query))
 }

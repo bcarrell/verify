@@ -11,6 +11,11 @@ func (v *verifier) Length(length int) *verifier {
 	return v.addVerification("Length", len(v.Query) == length)
 }
 
+// inverse verification for Length()
+func (v *verifier) IsntLength(length int) *verifier {
+	return v.addVerification("Length", len(v.Query) != length)
+}
+
 // verifies a string has a length greater than or equal to `length`
 func (v *verifier) MinLength(length int) *verifier {
 	return v.addVerification("MinLength", len(v.Query) >= length)
@@ -25,6 +30,12 @@ func (v *verifier) MaxLength(length int) *verifier {
 func (v *verifier) Int() *verifier {
 	_, err := strconv.Atoi(v.Query)
 	return v.addVerification("Int", err == nil)
+}
+
+// inverse verification for Int()
+func (v *verifier) IsntInt() *verifier {
+	_, err := strconv.Atoi(v.Query)
+	return v.addVerification("Int", err != nil)
 }
 
 // verifies a string is equivalent to another string

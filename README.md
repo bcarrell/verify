@@ -42,15 +42,22 @@ Super simple string validation for Go, inspired by node-validator.
 
 ## API
 
-Initialize by calling `verify.Verify(<str>)` and then use any of the following:
+Initialize by calling `verify.Verify(<str>)` and then use any of the following.
+Where it makes sense, all methods will have an inverse method, usually prefixed
+with `Isnt` or `Doesnt`, depending on grammar.
 
 	.Email()
+	.IsntEmail()
 	.Url()
+	.IsntUrl()
 	.CreditCard()
+	.IsntCreditCard()
 	.Length(<int>)
+	.IsntLength(<int>)
 	.MinLength(<int>) <-- inclusive
 	.MaxLength(<int>) <-- inclusive
 	.Int()
+	.IsntInt()
 	.Is(<string>)
 	.Isnt(<string>)
 	.IsEmpty()
@@ -62,6 +69,5 @@ Initialize by calling `verify.Verify(<str>)` and then use any of the following:
 
 I welcome any and all contributions.  If you'd like to request a verification
 method, be sure to create an Issue describing it.  If you'd like to contribute
-a verification method, please include corresponding test cases with your addition.
-
-Thanks!
+a verification method, please include an inverse method and corresponding test
+cases with your addition.  Thanks!

@@ -27,9 +27,28 @@ var (
 	}
 )
 
-func Test_IsValidCreditCard(t *testing.T) {
+// test for .IsCreditCard()
+func Test_IsCreditCard(t *testing.T) {
 	for _, card := range validCreditCardNumbers {
-		v := Verify(card).CreditCard().IsVerified()
+		v := Verify(card).IsCreditCard().IsVerified()
 		expect(t, v, true)
+	}
+
+	for _, card := range invalidCreditCardNumbers {
+		v := Verify(card).IsCreditCard().IsVerified()
+		refute(t, v, true)
+	}
+}
+
+// test for .IsntCreditCard()
+func Test_IsntCreditCard(t *testing.T) {
+	for _, card := range invalidCreditCardNumbers {
+		v := Verify(card).IsntCreditCard().IsVerified()
+		expect(t, v, true)
+	}
+
+	for _, card := range validCreditCardNumbers {
+		v := Verify(card).IsntCreditCard().IsVerified()
+		refute(t, v, true)
 	}
 }
