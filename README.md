@@ -1,6 +1,6 @@
 # verify
 
-Easy to use string validation utilities for Go, inspired by node-validator.
+Super simple string validation for Go, inspired by node-validator.
 
     go get github.com/bcarrell/verify
 
