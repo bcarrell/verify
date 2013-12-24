@@ -1,3 +1,5 @@
+// Package verify provides chainable methods for easy string validation for
+// common tasks
 package verify
 
 type verifier struct {
